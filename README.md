@@ -1,6 +1,6 @@
 ## react-npm-skeleton
 
-An ES6 Numeric label react components packaged with npm
+A react component to display numeric data, in it's various formats. These may include currencies, percentages and large numbers.
 
 ### Technology Stack:
 
