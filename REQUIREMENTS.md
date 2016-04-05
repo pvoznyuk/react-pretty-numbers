@@ -18,6 +18,7 @@ Other options can be passed in as `params` like so:
 ```
 let params = {
   justification: 'L',
+  locales : 'en-AU'
   currency: true,
   currencyIndicator: 'USD$',
   percentage: false,
@@ -39,6 +40,12 @@ let params = {
 | `L`             | Left justified |  |
 | `R`             | Right justified| *|
 | `C`             | Centered       |  |
+
+#### locales
+
+* Optional parameter to provide locale
+
+Default to 'en-AU'
 
 #### currency
 
