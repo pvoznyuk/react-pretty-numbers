@@ -1,7 +1,7 @@
 {
   "name": "react-npm-numeric-label",
   "version": "1.0.0",
-  "description": "Numeric label react components packaged with npm",
+  "description": "A react component to display numeric data, in it's various formats. These may include currencies, percentages and large numbers.",
   "main": "index.js",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
