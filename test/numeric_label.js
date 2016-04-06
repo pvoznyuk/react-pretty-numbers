@@ -34,6 +34,8 @@ describe('NumericLabel', () => {
     renderer.render(<NumericLabel params={options}>{number}</NumericLabel>);
     let result = renderer.getRenderOutput();
     Expect(result.props.children).toEqual('$12,233.00');
+    Expect(result.props.style.textAlign).toEqual('center');
+    Expect(result.props.className).toEqual('red ');
   });
 
   it('Whole Number format', () => {
@@ -57,7 +59,26 @@ describe('NumericLabel', () => {
     renderer.render(<NumericLabel params={options}>{number}</NumericLabel>);
     let result = renderer.getRenderOutput();
     Expect(result.props.children).toEqual('122333');
+    Expect(result.props.style.textAlign).toEqual('right');
   });
-
-
+  it('percentage format', () => {
+    let renderer = createRenderer();
+    let number = 1.22;
+    let options = {
+      'percentage':true
+    };
+    renderer.render(<NumericLabel params={options}>{number}</NumericLabel>);
+    let result = renderer.getRenderOutput();
+    Expect(result.props.children).toEqual('122%');
+  });
+  it('left Justification test case', () => {
+    let renderer = createRenderer();
+    let number = 1222;
+    let options = {
+      'justification':'L'
+    };
+    renderer.render(<NumericLabel params={options}>{number}</NumericLabel>);
+    let result = renderer.getRenderOutput();
+    Expect(result.props.style.textAlign).toEqual('left');
+  });
 });
