@@ -38,6 +38,7 @@
     "mocha": "^2.4.5",
     "react": "^0.14.8",
     "react-addons-test-utils": "^0.14.8",
+    "react-bootstrap": "^0.28.5",
     "react-dom": "^0.14.8",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
