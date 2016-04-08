@@ -24,8 +24,8 @@ npm start
 Run App:
 
 ```
-Open Browser
-Go to http:://localhost:8080
+npm start command automatically initiate browser at 3000 port
+http:://localhost:3000
 ```
 
 Run tests:

@@ -31,3 +31,4 @@ class App extends Component {
 }
 
 ReactDOM.render(<App />,document.querySelector('.container'));
+module.hot.accept();

@@ -1,5 +1,9 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: [
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client',
     './src/index.js'
   ],
   output: {
@@ -7,17 +11,19 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
   module: {
     loaders: [{
       exclude: /node_modules/,
-      loader: 'babel'
+      loaders: ['react-hot','babel']
     }]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
   }
+
 };
