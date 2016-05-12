@@ -22,9 +22,9 @@ describe('NumericLabel', () => {
     let number = 1243.2155;
     let options = {
       'justification':'C',
-      'locales':'en-AU',
+      'locales':'en-US',
       'currency':true,
-      'currencyIndicator':'AUD',
+      'currencyIndicator':'USD',
       'percentage':false,
       'precision':2,
       'wholenumber':null,
@@ -33,7 +33,7 @@ describe('NumericLabel', () => {
     };
     renderer.render(<NumericLabel params={options}>{number}</NumericLabel>);
     let result = renderer.getRenderOutput();
-    Expect(result.props.children).toEqual('AU$1,243.22');
+    Expect(result.props.children).toEqual('$1,243.22');
     Expect(result.props.style.textAlign).toEqual('center');
     Expect(result.props.className).toEqual('red ');
   });
