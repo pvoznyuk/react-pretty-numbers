@@ -17,6 +17,7 @@ git clone https://github.com/lobdev/react-npm-numeric-label.git <numeric-label>
 Start Server:
 
 ```
+First you have to replace the lib/index.js to server.js in package.json
 cd numeric-label
 npm i
 npm start
