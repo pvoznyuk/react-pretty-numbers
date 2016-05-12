@@ -2,8 +2,8 @@ import React from 'react';
 import Expect from 'expect';
 import Intl from 'intl';
 import {createRenderer} from 'react-addons-test-utils';
-// import ExpectJSX from 'expect-jsx';
-// Expect.extend(ExpectJSX);
+import ExpectJSX from 'expect-jsx';
+Expect.extend(ExpectJSX);
 
 import NumericLabel from '../src/component/numeric_label';
 
@@ -19,7 +19,7 @@ describe('NumericLabel', () => {
 
   it('Currency format', () => {
     let renderer = createRenderer();
-    let number = 12233;
+    let number = 1243.2155;
     let options = {
       'justification':'C',
       'locales':'en-AU',
@@ -33,7 +33,7 @@ describe('NumericLabel', () => {
     };
     renderer.render(<NumericLabel params={options}>{number}</NumericLabel>);
     let result = renderer.getRenderOutput();
-    Expect(result.props.children).toEqual('$12,233.00');
+    Expect(result.props.children).toEqual('AU$1,243.22');
     Expect(result.props.style.textAlign).toEqual('center');
     Expect(result.props.className).toEqual('red ');
   });
