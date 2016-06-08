@@ -1,6 +1,161 @@
-## react-npm-skeleton
+react-npm-numeric-label
+==================
 
-A react component to display numeric data, in it's various formats. These may include currencies, percentages and large numbers.
+A [React][] component to display numeric data, in it's various formats. These may include currencies, percentages and large numbers.
+
+[![npm Version][npm-badge]][npm]
+[![Build Status][travis-badge]][travis]
+
+Overview
+--------
+A minimal usage will just display the numeric value
+
+```
+let myNumber = 123;
+<NumericLabel>{myNumber}</NumericLabel>;
+```
+
+Other options can be passed in as `params` like so:
+
+```
+let params = {
+  justification: 'L',
+  locales : 'en-AU'
+  currency: true,
+  currencyIndicator: 'USD$',
+  percentage: false,
+  precision: 2,
+  commafy: false
+  cssClass: ['class1', 'class2']
+};
+<NumericLabel params=params>123</NumericLabel>;
+```
+
+### Params in more detail:
+
+#### justification
+
+* Optional parameter to justify text
+
+| Value         | Description    | Default |
+| ------------- |----------------|---------|
+| `L`           | Left justified |         |
+| `R`           | Right justified| *       |
+| `C`           | Centered       |         |
+
+#### locales
+
+* Optional parameter to provide locale
+
+Default to 'en-AU'
+
+#### currency
+
+* Optional parameter to provide currency format for numbers
+
+| Value         | Description                    |
+| ------------- |--------------------------------|
+| `true`        | to include text dollar sign    |
+|               |  and 2 decimals eg: 'usd $0.00'|
+| `false`       | to have no format eg: '0.00'   |
+
+#### currencyIndicator
+
+* Optional parameter to provide currency indicator
+
+if the `currency:` parameter is set to `true` and no value is supplied here, default to a dollar sign `$`
+
+#### percentage
+
+* Optional parameter to provide percentage format for numbers
+
+| Value         | Description
+| ------------- |-------------------------
+| `true`        | to have 2 decimals and
+|               |  include a percentage sign
+|               |  eg: '00.00%'
+| `false`       | not format eg: '0.00'
+
+#### precision
+
+* Optional parameter to provide number of decimal places
+
+| Value         | Description
+| ------------- |-----------
+| `Integer x`   | to round to `x` decimal places
+| `nil`         | no rounding
+
+#### wholenumber
+
+* Optional parameter to provide rounding for numbers (to an integer value, no decimal place)
+
+| Value         | Description
+| ------------- |-----------
+| `ceil`        | to round up to the nearest whole number
+| `floor`       | to round down to the nearest whole number
+| `nil`         | no ceil or floor
+
+#### commafy
+
+* Optional parameter to add commas to large number for readability
+
+| Value         | Description
+| ------------- |-------------
+| `true`        | Commas will be include, eg: `10,000`
+| `false`       | Commas will not be include, eg: `10000`
+
+#### cssClass
+
+* Optional parameter to add one or more css classes to the surrounding div
+
+### Features
+
+- Display numbers with precision.
+- Display numbers as currency.
+- Display numbers as percentage.
+- Justification and Styling of numbers.
+- Runs in the browser and Node.js.
+- Built on standards.
+
+### Example
+
+```js
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+import NumericLable from 'react-npm-numeric-label';
+
+class App extends Component {
+	constructor(props){
+		super(props);
+
+	}
+
+	render() {
+	    var option = {
+	      'justification':'C',
+	      'locales':'en-AU',
+	      'currency':true,
+	      'currencyIndicator':'AUD',
+	      'percentage':false,
+	      'precision':2,
+	      'wholenumber':null,
+	      'commafy':true,
+	      'cssClass':['red']
+	    };
+		return(
+			<div className='numeric-wrapper'>
+		      <h2>Numeric Lable Component</h2>
+		      <NumericLable params={option}>1243.2155</NumericLable>
+		      <NumericLable>123</NumericLable>
+			</div>
+		);
+	}
+}
+
+ReactDOM.render(<App />,document.querySelector('.container'));
+
+```
+
 
 ### Technology Stack:
 
@@ -37,21 +192,6 @@ npm i
 npm test
 ```
 
-Run test:watch:
-
-```
-cd numeric-label
-npm i
-npm run test:watch
-```
-Find Code Coverage:
-
-```
-cd numeric-label
-npm i
-npm run test:coverage
-```
-
 ### Developer Notes:
 
 Make sure you configure your editor/IDE to use:
@@ -61,3 +201,8 @@ Make sure you configure your editor/IDE to use:
 .eslintrc
 ```
 
+[npm]: https://www.npmjs.com/package/react-npm-numeric-label
+[npm-badge]: https://img.shields.io/npm/v/react-npm-numeric-label.svg?style=flat-square
+[travis]: https://travis-ci.org/lobdev/react-npm-numeric-label
+[travis-badge]: https://travis-ci.org/lobdev/react-npm-numeric-label.svg?branch=master
+[React]: http://facebook.github.io/react/
