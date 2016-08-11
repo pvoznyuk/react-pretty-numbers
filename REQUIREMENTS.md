@@ -23,8 +23,10 @@ let params = {
   currencyIndicator: 'USD$',
   percentage: false,
   precision: 2,
-  commafy: false
-  cssClass: ['class1', 'class2']
+  commafy: false,
+  shortFormat: true,
+  title: true,
+  cssClass: ['class1', 'class2'],
 };
 <NumericLabel params=params>123</NumericLabel>;
 ```
@@ -98,6 +100,27 @@ if the `currency:` parameter is set to `true` and no value is supplied here, def
 | ------------- |-------------
 | `true`        | Commas will be include, eg: `10,000`
 | `false`       | Commas will not be include, eg: `10000`
+
+#### shortFormat
+
+* Optional parameter to output the numbers in short format like 2.1k instead of 2100
+
+| Value         | Description
+| ------------- |-------------
+| `true`        | Short format will be applied, eg: `10k`
+| `false`       | Short format will not be applied, eg: `10000`
+
+
+#### title
+
+* Optional parameter to show some title on mouseover
+
+| Value         | Description
+| ------------- |-------------
+| `false`       | Title will not appear
+| `true`        | Title will appear and show unformatted number, eg: `123456.789`
+| `string`      | Title will appear and show the value of this option, eg: `Some string`
+
 
 #### cssClass
 

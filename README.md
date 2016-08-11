@@ -1,4 +1,4 @@
-react-npm-numeric-label
+react-pretty-numbers
 ==================
 
 A [React][] component to display numeric data, in it's various formats. These may include currencies, percentages and large numbers.
@@ -25,7 +25,9 @@ let params = {
   currencyIndicator: 'USD$',
   percentage: false,
   precision: 2,
-  commafy: false
+  commafy: false,
+  shortFormat: true,
+  title: true,
   cssClass: ['class1', 'class2']
 };
 <NumericLabel params=params>123</NumericLabel>;
@@ -104,6 +106,27 @@ if the `currency:` parameter is set to `true` and no value is supplied here, def
 | `true`        | Commas will be include, eg: `10,000`
 | `false`       | Commas will not be include, eg: `10000`
 
+#### shortFormat
+
+* Optional parameter to output the numbers in short format like 2.1k instead of 2100
+
+| Value         | Description
+| ------------- |-------------
+| `true`        | Short format will be applied, eg: `10k`
+| `false`       | Short format will not be applied, eg: `10000`
+
+
+#### title
+
+* Optional parameter to show some title on mouseover
+
+| Value         | Description
+| ------------- |-------------
+| `false`       | Title will not appear
+| `true`        | Title will appear and show unformatted number, eg: `123456.789`
+| `string`      | Title will appear and show the value of this option, eg: `Some string`
+
+
 #### cssClass
 
 * Optional parameter to add one or more css classes to the surrounding div
@@ -113,6 +136,8 @@ if the `currency:` parameter is set to `true` and no value is supplied here, def
 - Display numbers with precision.
 - Display numbers as currency.
 - Display numbers as percentage.
+- Display shorten numbers (like 2k).
+- Display titles on mouseover.
 - Justification and Styling of numbers.
 - Runs in the browser and Node.js.
 - Built on standards.
@@ -122,12 +147,11 @@ if the `currency:` parameter is set to `true` and no value is supplied here, def
 ```js
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import NumericLable from 'react-npm-numeric-label';
+import NumericLable from 'react-pretty-numbers';
 
 class App extends Component {
 	constructor(props){
 		super(props);
-
 	}
 
 	render() {
@@ -140,6 +164,8 @@ class App extends Component {
 	      'precision':2,
 	      'wholenumber':null,
 	      'commafy':true,
+	      'shortFormat':true,
+	      'title':true,
 	      'cssClass':['red']
 	    };
 		return(
@@ -167,7 +193,7 @@ ReactDOM.render(<App />,document.querySelector('.container'));
 Clone the repo as a new project:
 
 ```
-git clone https://github.com/lobdev/react-npm-numeric-label.git <numeric-label>
+git clone https://github.com/pvoznyuk/react-pretty-numbers.git <numeric-label>
 ```
 Start Server:
 
@@ -201,8 +227,6 @@ Make sure you configure your editor/IDE to use:
 .eslintrc
 ```
 
-[npm]: https://www.npmjs.com/package/react-npm-numeric-label
-[npm-badge]: https://img.shields.io/npm/v/react-npm-numeric-label.svg?style=flat-square
-[travis]: https://travis-ci.org/lobdev/react-npm-numeric-label
-[travis-badge]: https://travis-ci.org/lobdev/react-npm-numeric-label.svg?branch=master
+[npm]: https://www.npmjs.com/package/react-pretty-numbers
+[npm-badge]: https://img.shields.io/npm/v/react-pretty-numbers.svg?style=flat-square
 [React]: http://facebook.github.io/react/
