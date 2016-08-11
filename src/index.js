@@ -73,6 +73,10 @@ class App extends Component {
       <NumericLable params={option3}>21112975119977631243.2155</NumericLable><br/>
       <NumericLable params={option3}>321112975119977631243.2155</NumericLable><br/>
       <NumericLable params={option}>6321112975119977631243.2155</NumericLable><br/>
+      <NumericLable params={option}>Some text</NumericLable><br/>
+      <NumericLable params={option}>2e10</NumericLable><br/>
+      <NumericLable params={option}>.4</NumericLable><br/>
+      <NumericLable params={option}></NumericLable><br/>
       <NumericLable>123</NumericLable>
 			</div>
 		);

@@ -4,8 +4,16 @@ const NumericLabel = (props) => {
 
   // inspired by http://stackoverflow.com/a/9462382
   function nFormatter(num, minValue) {
-    var minValue = minValue || 0;
+
+    if(!num || !+num || typeof +num !== 'number'  ){
+      return {
+        number: num
+      }
+    }
+
     var num = +num;
+
+    var minValue = minValue || 0;
     var si = [
       { value: 1E18, symbol: "E" },
       { value: 1E15, symbol: "P" },
@@ -14,10 +22,6 @@ const NumericLabel = (props) => {
       { value: 1E6,  symbol: "M" },
       { value: 1E3,  symbol: "k" }
     ], rx = /\.0+$|(\.[0-9]*[1-9])0+$/, i;
-
-    console.log('num', num );
-    console.log('typeof num', typeof num );
-    console.log('minValue', minValue );
 
     if(typeof num === 'number' && num >= minValue) {
       for (i = 0; i < si.length; i++) {
@@ -121,7 +125,12 @@ const NumericLabel = (props) => {
       }
     }
 
-    var theFormattedNumber = Intl.NumberFormat(locales,option).format(shortenNumber);
+    var theFormattedNumber = shortenNumber;
+
+    if(typeof shortenNumber === 'number'){
+      theFormattedNumber = Intl.NumberFormat(locales,option).format(+shortenNumber);
+    }
+
     if(numberLetter){
       if( props.params && props.params.percentage ) {
         theFormattedNumber = theFormattedNumber.replace('%', numberLetter + '%');
