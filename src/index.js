@@ -15,11 +15,13 @@ class App extends Component {
       'currency':true,
       'currencyIndicator':'USD',
       'percentage':false,
-      'precision':1,
+      'precision':2,
       'wholenumber':null,
       'commafy':true,
       'cssClass':['red'],
       'shortFormat': true,
+      'shortFormatMinValue': 100000,
+      'shortFormatPrecision': 1,
       'title': true
     };
 

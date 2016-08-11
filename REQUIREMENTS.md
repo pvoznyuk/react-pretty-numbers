@@ -110,6 +110,23 @@ if the `currency:` parameter is set to `true` and no value is supplied here, def
 | `true`        | Short format will be applied, eg: `10k`
 | `false`       | Short format will not be applied, eg: `10000`
 
+#### shortFormatMinValue
+
+* Optional parameter to output the numbers in short format just in case if the number higher or equal to `shortFormatMinValue`
+
+| Value         | Description
+| ------------- |-------------
+| `100000`      | Short format will be applied if the number is higher or equal to 100000
+
+
+#### shortFormatPrecision
+
+* Optional parameter to provide number of decimal places for shortend numbers
+
+| Value         | Description
+| ------------- |-----------
+| `Integer x`   | shortend numbers to round to `x` decimal places
+| `nil`         | no rounding
 
 #### title
 

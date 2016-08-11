@@ -4,7 +4,6 @@ react-pretty-numbers
 A [React][] component to display numeric data, in it's various formats. These may include currencies, percentages and large numbers.
 
 [![npm Version][npm-badge]][npm]
-[![Build Status][travis-badge]][travis]
 
 Overview
 --------
@@ -115,6 +114,23 @@ if the `currency:` parameter is set to `true` and no value is supplied here, def
 | `true`        | Short format will be applied, eg: `10k`
 | `false`       | Short format will not be applied, eg: `10000`
 
+#### shortFormatMinValue
+
+* Optional parameter to output the numbers in short format just in case if the number higher or equal to `shortFormatMinValue`
+
+| Value         | Description
+| ------------- |-------------
+| `100000`      | Short format will be applied if the number is higher or equal to 100000
+
+#### shortFormatPrecision
+
+* Optional parameter to provide number of decimal places for shortend numbers
+
+| Value         | Description
+| ------------- |-----------
+| `Integer x`   | shortend numbers to round to `x` decimal places
+| `nil`         | no rounding
+
 
 #### title
 
@@ -125,7 +141,6 @@ if the `currency:` parameter is set to `true` and no value is supplied here, def
 | `false`       | Title will not appear
 | `true`        | Title will appear and show unformatted number, eg: `123456.789`
 | `string`      | Title will appear and show the value of this option, eg: `Some string`
-
 
 #### cssClass
 
@@ -165,6 +180,8 @@ class App extends Component {
 	      'wholenumber':null,
 	      'commafy':true,
 	      'shortFormat':true,
+	      'shortFormatMinValue': 100000,
+          'shortFormatPrecision': 1,
 	      'title':true,
 	      'cssClass':['red']
 	    };

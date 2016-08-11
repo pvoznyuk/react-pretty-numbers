@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 const NumericLabel = (props) => {
 
   // inspired by http://stackoverflow.com/a/9462382
-  function nFormatter(num) {
+  function nFormatter(num, minValue) {
+    var minValue = minValue || 0;
+    var num = +num;
     var si = [
       { value: 1E18, symbol: "E" },
       { value: 1E15, symbol: "P" },
@@ -12,12 +14,19 @@ const NumericLabel = (props) => {
       { value: 1E6,  symbol: "M" },
       { value: 1E3,  symbol: "k" }
     ], rx = /\.0+$|(\.[0-9]*[1-9])0+$/, i;
-    for (i = 0; i < si.length; i++) {
-      if (num >= si[i].value) {
-        //return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
-        return {
-          number: num / si[i].value,
-          letter: si[i].symbol
+
+    console.log('num', num );
+    console.log('typeof num', typeof num );
+    console.log('minValue', minValue );
+
+    if(typeof num === 'number' && num >= minValue) {
+      for (i = 0; i < si.length; i++) {
+        if (num >= si[i].value) {
+          //return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
+          return {
+            number: num / si[i].value,
+            letter: si[i].symbol
+          }
         }
       }
     }
@@ -103,9 +112,13 @@ const NumericLabel = (props) => {
     var numberLetter = '';
 
     if(props.params && props.params.shortFormat) {
-      var sn = nFormatter(number);
+      var sn = nFormatter(number, props.params.shortFormatMinValue||0 );
       shortenNumber = sn.number;
       numberLetter = sn.letter || '';
+
+      if( props.params.shortFormatMinValue && +number >=  props.params.shortFormatMinValue ){
+        option.maximumFractionDigits = props.params.shortFormatPrecision || props.params.precision || 0
+      }
     }
 
     var theFormattedNumber = Intl.NumberFormat(locales,option).format(shortenNumber);
