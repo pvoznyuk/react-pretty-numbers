@@ -1,22 +1,24 @@
 react-pretty-numbers
 ==================
 
+[![npm Version][npm-badge]][npm]
+
 A [React][] component to display numeric data, in it's various formats. These may include currencies, percentages and large numbers.
 
-[![npm Version][npm-badge]][npm]
+e.g. it can ouput number 25300 as 25.3k
 
 Overview
 --------
 A minimal usage will just display the numeric value
 
-```
-let myNumber = 123;
+```javascript
+let myNumber = 123456;
 <NumericLabel>{myNumber}</NumericLabel>;
 ```
 
 Other options can be passed in as `params` like so:
 
-```
+```javascript
 let params = {
   justification: 'L',
   locales : 'en-AU'
