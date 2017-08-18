@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import NumericLable from './component/numeric_label';
+import NumericLabel from './component/numeric_label';
 
 class App extends Component {
 	constructor(props){
@@ -53,31 +53,31 @@ class App extends Component {
 
     return(
 			<div className='numeric-wrapper'>
-      <h2>Numeric Lable Component</h2>
-      <NumericLable params={option}>1243.2155</NumericLable><br/>
-      <NumericLable params={option}>31243.2155</NumericLable><br/>
-      <NumericLable params={option}>631243.2155</NumericLable><br/>
-      <NumericLable params={option}>7631243.2155</NumericLable><br/>
-      <NumericLable params={option}>77631243.2155</NumericLable><br/>
-      <NumericLable params={option2}>977631243.2155</NumericLable><br/>
-      <NumericLable params={option2}>9977631243.2155</NumericLable><br/>
-      <NumericLable params={option}>19977631243.2155</NumericLable><br/>
-      <NumericLable params={option}>119977631243.2155</NumericLable><br/>
-      <NumericLable params={option}>5119977631243.2155</NumericLable><br/>
-      <NumericLable params={option}>75119977631243.2155</NumericLable><br/>
-      <NumericLable params={option}>975119977631243.2155</NumericLable><br/>
-      <NumericLable params={option}>2975119977631243.2155</NumericLable><br/>
-      <NumericLable params={option}>12975119977631243.2155</NumericLable><br/>
-      <NumericLable params={option}>112975119977631243.2155</NumericLable><br/>
-      <NumericLable params={option}>1112975119977631243.2155</NumericLable><br/>
-      <NumericLable params={option3}>21112975119977631243.2155</NumericLable><br/>
-      <NumericLable params={option3}>321112975119977631243.2155</NumericLable><br/>
-      <NumericLable params={option}>6321112975119977631243.2155</NumericLable><br/>
-      <NumericLable params={option}>Some text</NumericLable><br/>
-      <NumericLable params={option}>2e10</NumericLable><br/>
-      <NumericLable params={option}>.4</NumericLable><br/>
-      <NumericLable params={option}></NumericLable><br/>
-      <NumericLable>123</NumericLable>
+      <h2>Numeric Label Component</h2>
+      <NumericLabel params={option}>1243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>31243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>7631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>77631243.2155</NumericLabel><br/>
+      <NumericLabel params={option2}>977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option2}>9977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>19977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>119977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>5119977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>75119977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>975119977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>2975119977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>12975119977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>112975119977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>1112975119977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option3}>21112975119977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option3}>321112975119977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>6321112975119977631243.2155</NumericLabel><br/>
+      <NumericLabel params={option}>Some text</NumericLabel><br/>
+      <NumericLabel params={option}>2e10</NumericLabel><br/>
+      <NumericLabel params={option}>.4</NumericLabel><br/>
+      <NumericLabel params={option}></NumericLabel><br/>
+      <NumericLabel>123</NumericLabel>
 			</div>
 		);
 	}

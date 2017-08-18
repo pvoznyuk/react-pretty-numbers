@@ -164,7 +164,7 @@ if the `currency:` parameter is set to `true` and no value is supplied here, def
 ```js
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import NumericLable from 'react-pretty-numbers';
+import NumericLabel from 'react-pretty-numbers';
 
 class App extends Component {
 	constructor(props){
@@ -189,9 +189,9 @@ class App extends Component {
 	    };
 		return(
 			<div className='numeric-wrapper'>
-		      <h2>Numeric Lable Component</h2>
-		      <NumericLable params={option}>1243.2155</NumericLable>
-		      <NumericLable>123</NumericLable>
+		      <h2>Numeric Label Component</h2>
+		      <NumericLabel params={option}>1243.2155</NumericLabel>
+		      <NumericLabel>123</NumericLabel>
 			</div>
 		);
 	}
