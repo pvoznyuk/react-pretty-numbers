@@ -1,6 +1,25 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import Highlight from 'react-highlight.js';
 import NumericLabel from './component/numeric_label';
+
+const Panel = ({title, code, children}) =>
+  <div className="panel panel-default">
+    <div className="panel-heading">
+      <h4 className="panel-title" role="presentation">
+        { title }
+      </h4>
+    </div>
+    <div className="panel-body">
+      <h6>Code:</h6>
+      <Highlight language={'jsx'}>
+        {code}
+      </Highlight>
+      <h6>Output:</h6>
+      {children}
+    </div>
+  </div>
+;
 
 class App extends Component {
 	constructor(props){
@@ -20,7 +39,7 @@ class App extends Component {
       'commafy':true,
       'cssClass':['red'],
       'shortFormat': true,
-      'shortFormatMinValue': 100000,
+      'shortFormatMinValue': 10000,
       'shortFormatPrecision': 1,
       'title': true
     };
@@ -50,38 +69,59 @@ class App extends Component {
       'shortFormat': false
     };
 
+    const options1string = `const option = {
+'justification': 'L',
+'locales': 'en-US',
+'currency':true,
+'currencyIndicator': 'USD',
+'percentage': false,
+'precision': 2,
+'wholenumber': null,
+'commafy': true,
+'cssClass': ['red'],
+'shortFormat': true,
+'shortFormatMinValue': 10000,
+'shortFormatPrecision': 1,
+'title': true
+};`;
 
     return(
-			<div className='numeric-wrapper'>
-      <h2>Numeric Label Component</h2>
-      <NumericLabel params={option}>1243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>31243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>7631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>77631243.2155</NumericLabel><br/>
-      <NumericLabel params={option2}>977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option2}>9977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>19977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>119977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>5119977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>75119977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>975119977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>2975119977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>12975119977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>112975119977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>1112975119977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option3}>21112975119977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option3}>321112975119977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>6321112975119977631243.2155</NumericLabel><br/>
-      <NumericLabel params={option}>Some text</NumericLabel><br/>
-      <NumericLabel params={option}>2e10</NumericLabel><br/>
-      <NumericLabel params={option}>.4</NumericLabel><br/>
-      <NumericLabel params={option}></NumericLabel><br/>
-      <NumericLabel>123</NumericLabel>
+		<div className='numeric-wrapper'>
+        <h1>React Pretty Numbers</h1>
+        <p>Show pretty fomatted numbers</p>
+        <p><a href="https://github.com/pvoznyuk/react-pretty-numbers">https://github.com/pvoznyuk/react-pretty-numbers</a></p>
+
+        <Panel
+          title="Currency"
+          code={`<NumericLabel params={{currency: true, commafy:true, shortFormat: true, justification: 'L'}}>12345678.9012345</NumericLabel>`}>
+          <NumericLabel params={{currency: true, commafy:true, shortFormat: true, justification: 'L'}}>12345678.9012345</NumericLabel><br/>
+        </Panel>
+
+        <Panel
+          title="Percentage"
+          code={`<NumericLabel params={{percentage: true, precision: 3, shortFormatPrecision: 3, justification: 'C'}}>12345678.9012345</NumericLabel>`}>
+          <NumericLabel params={{percentage: true, precision: 3, shortFormatPrecision: 3, justification: 'C'}}>12345678.9012345</NumericLabel><br/>
+        </Panel>
+
+        <Panel
+          title="Default behaviour"
+          code={`<NumericLabel>12345678.9012345</NumericLabel>`}>
+          <NumericLabel>12345678.9012345</NumericLabel><br/>
+        </Panel>
+
+        <Panel
+          title="All possible options"
+          code={`${options1string}
+
+<NumericLabel params={option}>12345.6789</NumericLabel>
+          `}>
+          <NumericLabel params={option}>12345.6789</NumericLabel><br/>
+        </Panel>
+
 			</div>
 		);
 	}
 }
 
-ReactDOM.render(<App />,document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector('.container'));
 module.hot.accept();

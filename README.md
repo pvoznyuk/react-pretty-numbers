@@ -5,7 +5,10 @@ react-pretty-numbers
 
 A [React][] component to display numeric data, in it's various formats. These may include currencies, percentages and large numbers.
 
-e.g. it can ouput number 25300 as 25.3k
+e.g. it can output number `25300` as `25.3k`
+
+[DEMO](https://pvoznyuk.github.io/react-pretty-numbers/)
+
 
 Overview
 --------

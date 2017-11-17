@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 const NumericLabel = (props) => {
 
-  // inspired by http://stackoverflow.com/a/9462382
-  function nFormatter(num, minValue) {
+  const nFormatter = (num, minValue) => {
 
     if(!num || !+num || typeof +num !== 'number'  ){
       return {
@@ -26,7 +25,7 @@ const NumericLabel = (props) => {
     if(typeof num === 'number' && num >= minValue) {
       for (i = 0; i < si.length; i++) {
         if (num >= si[i].value) {
-          //return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
+          // return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
           return {
             number: num / si[i].value,
             letter: si[i].symbol
@@ -38,31 +37,35 @@ const NumericLabel = (props) => {
     return {
       number: num
     }
-  }
+  };
 
+  let option = {
+    minimumFractionDigits: 0
+  };
 
-  if(props.params) {
+  if (props.params) {
       var locales = props.params.locales;
-      if(props.params.wholenumber == 'floor'){
+      if (props.params.wholenumber == 'floor') {
         var number = Math.floor(props.children);
-      }else if(props.params.wholenumber == 'ceil'){
+      } else if (props.params.wholenumber == 'ceil') {
         var number = Math.ceil(props.children);
-      }else{
-        var number = props.children;
+      } else {
+        var number = +props.children;
       }
 
       var styles = 'right';
-      if(props.params.justification == 'L') {
+      if (props.params.justification == 'L') {
         styles = 'left';
       }
-      else if(props.params.justification == 'C') {
+      else if (props.params.justification == 'C') {
         styles = 'center';
       }
-      else{
+      else {
         styles = 'right';
       }
+
       var mystyle = {
-        'textAlign':styles
+        'textAlign': styles
       };
 
       if(props.params.currencyIndicator) {
@@ -72,27 +75,34 @@ const NumericLabel = (props) => {
         var currencyIndicator = 'USD';
       }
 
-      if(props.params.percentage){
-          var option = {
-            style:'percent',
-            maximumFractionDigits:props.params.precision,
-            useGrouping:props.params.commafy
-          };
+
+      if (props.params.percentage) {
+          option = Object.assign(option, {
+            style: 'percent',
+            maximumFractionDigits: props.params.precision || 2,
+            minimumFractionDigits: props.params.precision || 0,
+            useGrouping: props.params.commafy
+          });
       }
       else if(props.params.currency){
-          var option = {
-            style:'currency',
-            currency:currencyIndicator,
-            maximumFractionDigits:props.params.precision,
-            useGrouping:props.params.commafy
-          };
+          option = Object.assign(option, {
+            style: 'currency',
+            currency: currencyIndicator,
+            maximumFractionDigits: props.params.precision || 2,
+            minimumFractionDigits: props.params.precision || 0,
+            useGrouping: props.params.commafy
+          });
       }
       else {
-          var option = {
-            style:'decimal',
-            maximumFractionDigits:props.params.precision,
-            useGrouping:props.params.commafy
-          };
+          option = Object.assign(option, {
+            style: 'decimal',
+            useGrouping: props.params.commafy
+          });
+
+          if (props.params.precision) {
+            option.maximumFractionDigits = props.params.precision;
+            option.minimumFractionDigits = props.params.precision || 0;
+          }
       }
 
       var css = '';
@@ -102,36 +112,37 @@ const NumericLabel = (props) => {
         });
       }
 
-    }
-    else{
-      var number = props.children;
+    } else {
+      var number = +props.children;
       var locales = 'en-US';
       var mystyle = {
-        'textAlign':'left'
+        'textAlign': 'left'
       };
-      var option = {};
     }
 
     var shortenNumber = number;
     var numberLetter = '';
 
-    if(props.params && props.params.shortFormat) {
+    if (props.params && props.params.shortFormat) {
       var sn = nFormatter(number, props.params.shortFormatMinValue||0 );
       shortenNumber = sn.number;
       numberLetter = sn.letter || '';
 
-      if( props.params.shortFormatMinValue && +number >=  props.params.shortFormatMinValue ){
+      if (props.params.shortFormatMinValue && +number >=  props.params.shortFormatMinValue) {
         option.maximumFractionDigits = props.params.shortFormatPrecision || props.params.precision || 0
       }
+
     }
+
+    option.minimumFractionDigits = Math.min(~~option.minimumFractionDigits, ~~option.maximumFractionDigits);
 
     var theFormattedNumber = shortenNumber;
 
-    if(typeof shortenNumber === 'number'){
-      theFormattedNumber = Intl.NumberFormat(locales,option).format(+shortenNumber);
+    if (typeof shortenNumber === 'number') {
+      theFormattedNumber = Intl.NumberFormat(locales, option).format(+shortenNumber);
     }
 
-    if(numberLetter){
+    if (numberLetter) {
       if( props.params && props.params.percentage ) {
         theFormattedNumber = theFormattedNumber.replace('%', numberLetter + '%');
       } else {
@@ -161,7 +172,7 @@ const NumericLabel = (props) => {
           </div>
         )
       }
-    } else {
+    }  else {
       // span
       if(title){
         // with title
