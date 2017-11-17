@@ -27,6 +27,9 @@
     "react": "^0.14 || >=15"
   },
   "devDependencies": {
+    "intl": "^1.1.0",
+    "eslint-plugin-react": "^4.2.3",
+    "react-highlight.js": "^1.0.7",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
     "babel-istanbul": "^0.7.0",
@@ -39,7 +42,6 @@
     "eslint-plugin-react": "^4.2.3",
     "expect": "^1.16.0",
     "expect-jsx": "^2.4.0",
-    "intl": "^1.1.0",
     "istanbul": "^0.4.2",
     "jquery": "^2.2.2",
     "mocha": "^2.4.5",
