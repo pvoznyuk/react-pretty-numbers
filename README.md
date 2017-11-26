@@ -3,7 +3,7 @@ react-pretty-numbers
 
 [![npm Version][npm-badge]][npm]
 
-A [React][] component to display numeric data, in it's various formats. These may include currencies, percentages and large numbers.
+A [React][] component to display numeric data in various formats. This may include currencies, percentages and large numbers.
 
 e.g. it can output number `25300` as `25.3k`
 
