@@ -19,7 +19,7 @@ module.exports = {
   module: {
     loaders: [{
       exclude: /node_modules/,
-      loaders: ['react-hot','babel']
+      loaders: ['babel']
     }]
   },
   resolve: {
